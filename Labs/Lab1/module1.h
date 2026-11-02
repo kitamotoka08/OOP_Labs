@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 #include "Resource.h"
 
-INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+void RunRobota1(HINSTANCE hInstance, HWND hWndParent);

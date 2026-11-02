@@ -4,6 +4,8 @@
 #include "framework.h"
 #include "Lab1.h"
 #include <stdio.h>
+#include "module1.h"
+#include "module2.h"
 
 #define MAX_LOADSTRING 100
 
@@ -17,9 +19,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    Robota1(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    Robota2_Window1(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    Robota2_Window2(HWND, UINT, WPARAM, LPARAM);
 
 HWND hStatic = 0;
 
@@ -157,7 +156,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         sprintf_s(textBuffer, 32, "Value: %d", receivedValue);
         SetWindowTextA(hStatic, textBuffer);
         InvalidateRect(hStatic, NULL, TRUE);
-        UpdateWindow(hStatic);
+        UpdateWindow(hStatic); 
         break;
     }
     case WM_COMMAND:
@@ -168,11 +167,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             case ID_ACTIONS_ROBOTA2:
                 ShowWindow(hWnd, SW_HIDE);
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_Work2_DIALOG1), hWnd, Robota2_Window1);
+                RunRobota2_Window1(hInst, hWnd);
                 break;
             case ID_ACTIONS_ROBOTA1:
                 ShowWindow(hWnd, SW_HIDE);
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_Work1_DIALOG), hWnd, Robota1);
+                RunRobota1(hInst, hWnd);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

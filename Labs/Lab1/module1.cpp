@@ -2,8 +2,7 @@
 #include <math.h>
 #include "module1.h"
 
-
-INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
     int pos = 0;
@@ -14,9 +13,9 @@ INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_INITDIALOG:
     {
         HWND hScroll = GetDlgItem(hDlg, IDC_SCROLLBAR1);
-        SetScrollRange(hScroll, SB_CTL, 0, 100, FALSE);
-        SetScrollPos(hScroll, SB_CTL, 0, TRUE);
-        SetDlgItemInt(hDlg, IDC_STATIC, 0, TRUE);
+        SetScrollRange(hScroll, SB_CTL, 1, 100, FALSE);
+        SetScrollPos(hScroll, SB_CTL, 1, TRUE);
+        SetDlgItemInt(hDlg, IDC_STATIC, 1, TRUE);
         return (INT_PTR)TRUE;
     }
     case WM_COMMAND:
@@ -24,7 +23,7 @@ INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
         if (LOWORD(wParam) == IDCANCEL)
         {
             EndDialog(hDlg, LOWORD(wParam));
-			ShowWindow(hWndParent, SW_SHOW);
+            ShowWindow(hWndParent, SW_SHOW);
             return (INT_PTR)TRUE;
         }
 
@@ -61,4 +60,9 @@ INT_PTR CALLBACK Robota1(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     }
     return (INT_PTR)FALSE;
+}
+
+void RunRobota1(HINSTANCE hInstance, HWND hWndParent)
+{
+    DialogBox(hInstance, MAKEINTRESOURCE(IDD_Work1_DIALOG), hWndParent, Robota1);
 }

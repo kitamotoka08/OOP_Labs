@@ -42,6 +42,9 @@
     <ClInclude Include="module2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="module3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab1.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="module2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="module3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
